@@ -30,6 +30,7 @@ RUN curl -L https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -o op
         -D CMAKE_INSTALL_PREFIX=/usr/local .. && \
     make && \
     make install && \
+    cd ../.. && \
     rm -rf opencv*
 
 WORKDIR "/root"
