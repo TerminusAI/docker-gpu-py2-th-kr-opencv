@@ -10,7 +10,8 @@ RUN apt-get update && \
     apt-get install -y build-essential cmake pkg-config libgtk2.0-dev libjpeg-dev libpng-dev unzip && \
 	apt-get clean && \
 	apt-get autoremove && \
-	rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*
+	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#	rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*
 
 # OpenCV
 RUN curl -L https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -o opencv.zip && \
@@ -28,7 +29,7 @@ RUN curl -L https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -o op
         -D BUILD_PERF_TESTS=OFF \
         -D BUILD_EXAMPLES=OFF \
         -D CMAKE_INSTALL_PREFIX=/usr/local .. && \
-    make && \
+    make -j2 && \
     make install && \
     cd ../.. && \
     rm -rf opencv*
