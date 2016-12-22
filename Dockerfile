@@ -7,7 +7,7 @@ ARG CUDA_ARCHITECTURE="3.0"
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         python-opencv \
-        libdc1394-22-dev
+        libdc1394-22-dev \
         libopencv-dev \
         libtbb2 \
         libtbb-dev \
