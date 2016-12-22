@@ -10,5 +10,8 @@ RUN apt-get update && \
 	apt-get autoremove && \
 	rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*
 
+ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
+ENV LIBRARY_PATH /usr/lib/x86_64-linux-gnu:${LIBRARY_PATH}
+
 WORKDIR "/root"
 CMD ["/bin/bash"]
